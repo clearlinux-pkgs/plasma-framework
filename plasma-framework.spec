@@ -5,29 +5,31 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.50.0
-Release  : 3
-URL      : https://download.kde.org/stable/frameworks/5.50/plasma-framework-5.50.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.50/plasma-framework-5.50.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.50/plasma-framework-5.50.0.tar.xz.sig
+Version  : 5.51.0
+Release  : 4
+URL      : https://download.kde.org/stable/frameworks/5.51/plasma-framework-5.51.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.51/plasma-framework-5.51.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.51/plasma-framework-5.51.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
-Requires: plasma-framework-bin
-Requires: plasma-framework-lib
-Requires: plasma-framework-license
-Requires: plasma-framework-data
-Requires: plasma-framework-locales
-Requires: plasma-framework-man
+Requires: plasma-framework-bin = %{version}-%{release}
+Requires: plasma-framework-data = %{version}-%{release}
+Requires: plasma-framework-lib = %{version}-%{release}
+Requires: plasma-framework-license = %{version}-%{release}
+Requires: plasma-framework-locales = %{version}-%{release}
+Requires: plasma-framework-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules pkgconfig(egl)
+BuildRequires : extra-cmake-modules pkgconfig(xcb) xcb-util-cursor-dev xcb-util-image-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev xcb-util-dev
 BuildRequires : kactivities-dev
 BuildRequires : kglobalaccel-dev
 BuildRequires : kirigami2-dev
 BuildRequires : kwayland-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : mesa-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 BuildRequires : qtdeclarative-dev
 BuildRequires : qtmultimedia-dev
 BuildRequires : qtquickcontrols2-dev
@@ -44,9 +46,9 @@ common GUI elements, data and service interaction, search system, etc.
 %package bin
 Summary: bin components for the plasma-framework package.
 Group: Binaries
-Requires: plasma-framework-data
-Requires: plasma-framework-license
-Requires: plasma-framework-man
+Requires: plasma-framework-data = %{version}-%{release}
+Requires: plasma-framework-license = %{version}-%{release}
+Requires: plasma-framework-man = %{version}-%{release}
 
 %description bin
 bin components for the plasma-framework package.
@@ -63,10 +65,10 @@ data components for the plasma-framework package.
 %package dev
 Summary: dev components for the plasma-framework package.
 Group: Development
-Requires: plasma-framework-lib
-Requires: plasma-framework-bin
-Requires: plasma-framework-data
-Provides: plasma-framework-devel
+Requires: plasma-framework-lib = %{version}-%{release}
+Requires: plasma-framework-bin = %{version}-%{release}
+Requires: plasma-framework-data = %{version}-%{release}
+Provides: plasma-framework-devel = %{version}-%{release}
 
 %description dev
 dev components for the plasma-framework package.
@@ -75,8 +77,8 @@ dev components for the plasma-framework package.
 %package lib
 Summary: lib components for the plasma-framework package.
 Group: Libraries
-Requires: plasma-framework-data
-Requires: plasma-framework-license
+Requires: plasma-framework-data = %{version}-%{release}
+Requires: plasma-framework-license = %{version}-%{release}
 
 %description lib
 lib components for the plasma-framework package.
@@ -107,26 +109,26 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.50.0
+%setup -q -n plasma-framework-5.51.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536437749
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1539642521
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1536437749
+export SOURCE_DATE_EPOCH=1539642521
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/plasma-framework
-cp COPYING %{buildroot}/usr/share/doc/plasma-framework/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/doc/plasma-framework/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
+cp COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/COPYING
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-framework/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -295,6 +297,7 @@ popd
 /usr/share/plasma/desktoptheme/default/icons/nepomuk.svgz
 /usr/share/plasma/desktoptheme/default/icons/network.svgz
 /usr/share/plasma/desktoptheme/default/icons/notification.svgz
+/usr/share/plasma/desktoptheme/default/icons/osd.svgz
 /usr/share/plasma/desktoptheme/default/icons/phone.svgz
 /usr/share/plasma/desktoptheme/default/icons/plasmavault.svgz
 /usr/share/plasma/desktoptheme/default/icons/plasmavault_error.svgz
@@ -503,9 +506,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.50.0
+/usr/lib64/libKF5Plasma.so.5.51.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.50.0
+/usr/lib64/libKF5PlasmaQuick.so.5.51.0
 /usr/lib64/qt5/plugins/kpackage/packagestructure/containmentactions_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/dataengine_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmageneric_packagestructure.so
@@ -531,12 +534,14 @@ popd
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Label.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Menu.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/MenuItem.qml
+/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/PageIndicator.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Popup.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/ProgressBar.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/RadioButton.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/RadioDelegate.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/RadioIndicator.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/RangeSlider.qml
+/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/RoundButton.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/ScrollBar.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/ScrollView.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Slider.qml
@@ -706,12 +711,12 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/platformcomponents/qmldir
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/plasma-framework/COPYING
-/usr/share/doc/plasma-framework/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/plasma-framework/COPYING
+/usr/share/package-licenses/plasma-framework/COPYING.LIB
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/ca/man1/plasmapkg2.1
 /usr/share/man/de/man1/plasmapkg2.1
 /usr/share/man/es/man1/plasmapkg2.1
