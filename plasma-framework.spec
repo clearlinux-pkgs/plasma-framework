@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.51.0
-Release  : 4
-URL      : https://download.kde.org/stable/frameworks/5.51/plasma-framework-5.51.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.51/plasma-framework-5.51.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.51/plasma-framework-5.51.0.tar.xz.sig
+Version  : 5.52.0
+Release  : 5
+URL      : https://download.kde.org/stable/frameworks/5.52/plasma-framework-5.52.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.52/plasma-framework-5.52.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.52/plasma-framework-5.52.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -42,6 +42,14 @@ This directory contains the classes making up libplasma, which provides the
 core framework used by Plasma applications, such as the Plasma desktop shell
 and its components. This includes applet and extension definitions and loading,
 common GUI elements, data and service interaction, search system, etc.
+
+%package abi
+Summary: abi components for the plasma-framework package.
+Group: Default
+
+%description abi
+abi components for the plasma-framework package.
+
 
 %package bin
 Summary: bin components for the plasma-framework package.
@@ -109,14 +117,14 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.51.0
+%setup -q -n plasma-framework-5.52.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539642521
+export SOURCE_DATE_EPOCH=1541880123
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -124,7 +132,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1539642521
+export SOURCE_DATE_EPOCH=1541880123
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/COPYING
@@ -136,6 +144,11 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files abi
+%defattr(-,root,root,-)
+/usr/share/abi/libKF5Plasma.so.5.52.0.abi
+/usr/share/abi/libKF5PlasmaQuick.so.5.52.0.abi
 
 %files bin
 %defattr(-,root,root,-)
@@ -506,9 +519,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.51.0
+/usr/lib64/libKF5Plasma.so.5.52.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.51.0
+/usr/lib64/libKF5PlasmaQuick.so.5.52.0
 /usr/lib64/qt5/plugins/kpackage/packagestructure/containmentactions_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/dataengine_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmageneric_packagestructure.so
