@@ -6,11 +6,11 @@
 #
 Name     : plasma-framework
 Version  : 5.56.1
-Release  : 12
+Release  : 13
 URL      : https://download.kde.org/stable/frameworks/5.56/plasma-framework-5.56.1.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.56/plasma-framework-5.56.1.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.56/plasma-framework-5.56.1.tar.xz.sig
-Summary  : Plasma library and runtime components based upon KF5 and Qt5
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: plasma-framework-bin = %{version}-%{release}
@@ -24,9 +24,25 @@ BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules pkgconfig(egl)
 BuildRequires : extra-cmake-modules pkgconfig(xcb) xcb-util-cursor-dev xcb-util-image-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev xcb-util-dev
 BuildRequires : kactivities-dev
+BuildRequires : karchive-dev
+BuildRequires : kcodecs-dev
+BuildRequires : kcompletion-dev
+BuildRequires : kconfigwidgets-dev
+BuildRequires : kdbusaddons-dev
+BuildRequires : kdeclarative-dev
 BuildRequires : kglobalaccel-dev
+BuildRequires : kguiaddons-dev
+BuildRequires : kiconthemes-dev
+BuildRequires : kio-dev
 BuildRequires : kirigami2-dev
+BuildRequires : kitemviews-dev
+BuildRequires : kjobwidgets-dev
+BuildRequires : knotifications-dev
+BuildRequires : kpackage-dev
 BuildRequires : kwayland-dev
+BuildRequires : kwidgetsaddons-dev
+BuildRequires : kwindowsystem-dev
+BuildRequires : kxmlgui-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : mesa-dev
 BuildRequires : qtbase-dev mesa-dev
@@ -35,6 +51,8 @@ BuildRequires : qtmultimedia-dev
 BuildRequires : qtquickcontrols2-dev
 BuildRequires : qtsvg-dev
 BuildRequires : qtxmlpatterns-dev
+BuildRequires : solid-dev
+Patch1: Fix-bugs-kde-org-405548.patch
 
 %description
 libplasma
@@ -68,7 +86,6 @@ Requires: plasma-framework-lib = %{version}-%{release}
 Requires: plasma-framework-bin = %{version}-%{release}
 Requires: plasma-framework-data = %{version}-%{release}
 Provides: plasma-framework-devel = %{version}-%{release}
-Requires: plasma-framework = %{version}-%{release}
 
 %description dev
 dev components for the plasma-framework package.
@@ -110,22 +127,23 @@ man components for the plasma-framework package.
 
 %prep
 %setup -q -n plasma-framework-5.56.1
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552488844
+export SOURCE_DATE_EPOCH=1553030527
 mkdir -p clr-build
 pushd clr-build
 export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552488844
+export SOURCE_DATE_EPOCH=1553030527
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/COPYING
