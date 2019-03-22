@@ -1,0 +1,25 @@
+From 349648c1e6798cdc69e00dd538c1dd581f959234 Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Thu, 21 Mar 2019 19:13:03 +0100
+Subject: [PATCH] Fix crash
+
+---
+ src/plasmaquick/appletquickitem.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plasmaquick/appletquickitem.cpp b/src/plasmaquick/appletquickitem.cpp
+index 195b6f17f..9676df4f2 100644
+--- a/src/plasmaquick/appletquickitem.cpp
++++ b/src/plasmaquick/appletquickitem.cpp
+@@ -328,7 +328,7 @@ void AppletQuickItemPrivate::preloadForExpansion()
+ 
+     if (!appletShouldBeExpanded() && compactRepresentationExpanderItem) {
+         compactRepresentationExpanderItem->setProperty("fullRepresentation", QVariant::fromValue<QObject*>(createFullRepresentationItem()));
+-    } else {
++    } else if (fullRepresentationItem) {
+         fullRepresentationItem->setProperty("parent", QVariant::fromValue<QObject*>(q));
+     }
+ 
+-- 
+2.20.1
+

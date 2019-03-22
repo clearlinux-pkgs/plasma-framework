@@ -6,7 +6,7 @@
 #
 Name     : plasma-framework
 Version  : 5.56.1
-Release  : 13
+Release  : 14
 URL      : https://download.kde.org/stable/frameworks/5.56/plasma-framework-5.56.1.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.56/plasma-framework-5.56.1.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.56/plasma-framework-5.56.1.tar.xz.sig
@@ -52,7 +52,8 @@ BuildRequires : qtquickcontrols2-dev
 BuildRequires : qtsvg-dev
 BuildRequires : qtxmlpatterns-dev
 BuildRequires : solid-dev
-Patch1: Fix-bugs-kde-org-405548.patch
+Patch1: 0001-Fix-bugs-kde-org-405548.patch
+Patch2: 0002-Fix-crash.patch
 
 %description
 libplasma
@@ -127,7 +128,8 @@ man components for the plasma-framework package.
 
 %prep
 %setup -q -n plasma-framework-5.56.1
-%patch1 -p1
+git apply %{_sourcedir}/0001-Fix-bugs-kde-org-405548.patch
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
