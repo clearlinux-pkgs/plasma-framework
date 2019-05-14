@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.57.0
-Release  : 17
-URL      : https://download.kde.org/stable/frameworks/5.57/plasma-framework-5.57.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.57/plasma-framework-5.57.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.57/plasma-framework-5.57.0.tar.xz.sig
+Version  : 5.58.0
+Release  : 18
+URL      : https://download.kde.org/stable/frameworks/5.58/plasma-framework-5.58.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.58/plasma-framework-5.58.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.58/plasma-framework-5.58.0.tar.xz.sig
 Summary  : Plasma library and runtime components based upon KF5 and Qt5
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -30,6 +30,7 @@ BuildRequires : kcompletion-dev
 BuildRequires : kconfigwidgets-dev
 BuildRequires : kdbusaddons-dev
 BuildRequires : kdeclarative-dev
+BuildRequires : kdoctools-dev
 BuildRequires : kglobalaccel-dev
 BuildRequires : kguiaddons-dev
 BuildRequires : kiconthemes-dev
@@ -86,6 +87,7 @@ Requires: plasma-framework-bin = %{version}-%{release}
 Requires: plasma-framework-data = %{version}-%{release}
 Provides: plasma-framework-devel = %{version}-%{release}
 Requires: plasma-framework = %{version}-%{release}
+Requires: plasma-framework = %{version}-%{release}
 
 %description dev
 dev components for the plasma-framework package.
@@ -126,14 +128,14 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.57.0
+%setup -q -n plasma-framework-5.58.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557045915
+export SOURCE_DATE_EPOCH=1557810256
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -148,7 +150,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557045915
+export SOURCE_DATE_EPOCH=1557810256
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/COPYING
@@ -530,9 +532,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.57.0
+/usr/lib64/libKF5Plasma.so.5.58.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.57.0
+/usr/lib64/libKF5PlasmaQuick.so.5.58.0
 /usr/lib64/qt5/plugins/kpackage/packagestructure/containmentactions_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/dataengine_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmageneric_packagestructure.so
@@ -580,10 +582,11 @@ popd
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/ToolBar.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/ToolButton.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/ToolTip.qml
+/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/mobiletextselection/MobileCursor.qml
+/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/mobiletextselection/MobileTextActionsToolBar.qml
+/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/mobiletextselection/qmldir
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/private/ButtonShadow.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/private/DefaultListItemBackground.qml
-/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/private/MobileCursor.qml
-/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/private/MobileTextActionsToolBar.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/private/RoundShadow.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/private/TextFieldFocus.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/private/qmldir
@@ -663,10 +666,11 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/TextField.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/ToolBar.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/ToolButton.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/mobiletextselection/MobileCursor.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/mobiletextselection/MobileTextActionsToolBar.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/mobiletextselection/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/private/ButtonShadow.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/private/DefaultListItemBackground.qml
-/usr/lib64/qt5/qml/org/kde/plasma/components.3/private/MobileCursor.qml
-/usr/lib64/qt5/qml/org/kde/plasma/components.3/private/MobileTextActionsToolBar.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/private/RoundShadow.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/private/TextFieldFocus.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/private/qmldir
