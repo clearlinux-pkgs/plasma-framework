@@ -1,8 +1,9 @@
-5.60.0
+5.61.0
 kactivities-dev
 karchive-dev
 kcodecs-dev
 kcompletion-dev
+kconfig-dev
 kconfigwidgets-dev
 kdbusaddons-dev
 kdeclarative-dev
