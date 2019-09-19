@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.61.0
-Release  : 21
-URL      : https://download.kde.org/stable/frameworks/5.61/plasma-framework-5.61.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.61/plasma-framework-5.61.0.tar.xz
-Source1 : https://download.kde.org/stable/frameworks/5.61/plasma-framework-5.61.0.tar.xz.sig
+Version  : 5.62.0
+Release  : 22
+URL      : https://download.kde.org/stable/frameworks/5.62/plasma-framework-5.62.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.62/plasma-framework-5.62.0.tar.xz
+Source1 : https://download.kde.org/stable/frameworks/5.62/plasma-framework-5.62.0.tar.xz.sig
 Summary  : Plasma library and runtime components based upon KF5 and Qt5
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -130,14 +130,14 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.61.0
+%setup -q -n plasma-framework-5.62.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565614394
+export SOURCE_DATE_EPOCH=1568936934
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -150,11 +150,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1565614394
+export SOURCE_DATE_EPOCH=1568936934
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/COPYING
@@ -537,9 +537,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.61.0
+/usr/lib64/libKF5Plasma.so.5.62.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.61.0
+/usr/lib64/libKF5PlasmaQuick.so.5.62.0
 /usr/lib64/qt5/plugins/kpackage/packagestructure/containmentactions_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/dataengine_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmageneric_packagestructure.so
