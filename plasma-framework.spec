@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.62.0
-Release  : 22
-URL      : https://download.kde.org/stable/frameworks/5.62/plasma-framework-5.62.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.62/plasma-framework-5.62.0.tar.xz
-Source1 : https://download.kde.org/stable/frameworks/5.62/plasma-framework-5.62.0.tar.xz.sig
+Version  : 5.63.0
+Release  : 23
+URL      : https://download.kde.org/stable/frameworks/5.63/plasma-framework-5.63.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.63/plasma-framework-5.63.0.tar.xz
+Source1 : https://download.kde.org/stable/frameworks/5.63/plasma-framework-5.63.0.tar.xz.sig
 Summary  : Plasma library and runtime components based upon KF5 and Qt5
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -130,14 +130,14 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.62.0
+%setup -q -n plasma-framework-5.63.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568936934
+export SOURCE_DATE_EPOCH=1570993356
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -154,7 +154,7 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1568936934
+export SOURCE_DATE_EPOCH=1570993356
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/COPYING
@@ -469,6 +469,7 @@ popd
 /usr/share/plasma/services/dataengineservice.operations
 /usr/share/plasma/services/plasmoidservice.operations
 /usr/share/plasma/services/storage.operations
+/usr/share/qlogging-categories5/plasma-framework.categories
 
 %files dev
 %defattr(-,root,root,-)
@@ -537,9 +538,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.62.0
+/usr/lib64/libKF5Plasma.so.5.63.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.62.0
+/usr/lib64/libKF5PlasmaQuick.so.5.63.0
 /usr/lib64/qt5/plugins/kpackage/packagestructure/containmentactions_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/dataengine_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmageneric_packagestructure.so
@@ -650,15 +651,23 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Container.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Control.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Dial.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/Dialog.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/DialogButtonBox.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/Drawer.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Frame.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/GroupBox.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/ItemDelegate.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Label.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/Menu.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/MenuItem.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/PageIndicator.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/Popup.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/ProgressBar.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/RadioButton.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/RadioDelegate.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/RadioIndicator.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/RangeSlider.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/RoundButton.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/ScrollBar.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/ScrollView.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Slider.qml
