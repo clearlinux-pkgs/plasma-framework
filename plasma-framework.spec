@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.64.0
-Release  : 24
-URL      : https://download.kde.org/stable/frameworks/5.64/plasma-framework-5.64.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.64/plasma-framework-5.64.0.tar.xz
-Source1 : https://download.kde.org/stable/frameworks/5.64/plasma-framework-5.64.0.tar.xz.sig
+Version  : 5.65.0
+Release  : 25
+URL      : https://download.kde.org/stable/frameworks/5.65/plasma-framework-5.65.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.65/plasma-framework-5.65.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.65/plasma-framework-5.65.0.tar.xz.sig
 Summary  : Plasma library and runtime components based upon KF5 and Qt5
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -24,28 +24,9 @@ BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules pkgconfig(egl)
 BuildRequires : extra-cmake-modules pkgconfig(xcb) xcb-util-cursor-dev xcb-util-image-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev xcb-util-dev
 BuildRequires : kactivities-dev
-BuildRequires : karchive-dev
-BuildRequires : kcodecs-dev
-BuildRequires : kcompletion-dev
-BuildRequires : kconfig-dev
-BuildRequires : kconfigwidgets-dev
-BuildRequires : kdbusaddons-dev
-BuildRequires : kdeclarative-dev
-BuildRequires : kdoctools-dev
 BuildRequires : kglobalaccel-dev
-BuildRequires : kguiaddons-dev
-BuildRequires : kiconthemes-dev
-BuildRequires : kio-dev
 BuildRequires : kirigami2-dev
-BuildRequires : kitemviews-dev
-BuildRequires : kjobwidgets-dev
-BuildRequires : knotifications-dev
-BuildRequires : kpackage-dev
-BuildRequires : kservice-dev
 BuildRequires : kwayland-dev
-BuildRequires : kwidgetsaddons-dev
-BuildRequires : kwindowsystem-dev
-BuildRequires : kxmlgui-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : mesa-dev
 BuildRequires : qtbase-dev mesa-dev
@@ -54,7 +35,6 @@ BuildRequires : qtmultimedia-dev
 BuildRequires : qtquickcontrols2-dev
 BuildRequires : qtsvg-dev
 BuildRequires : qtxmlpatterns-dev
-BuildRequires : solid-dev
 
 %description
 libplasma
@@ -88,7 +68,6 @@ Requires: plasma-framework-lib = %{version}-%{release}
 Requires: plasma-framework-bin = %{version}-%{release}
 Requires: plasma-framework-data = %{version}-%{release}
 Provides: plasma-framework-devel = %{version}-%{release}
-Requires: plasma-framework = %{version}-%{release}
 Requires: plasma-framework = %{version}-%{release}
 
 %description dev
@@ -130,17 +109,17 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.64.0
+%setup -q -n plasma-framework-5.65.0
+cd %{_builddir}/plasma-framework-5.65.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573426229
+export SOURCE_DATE_EPOCH=1576542643
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -154,11 +133,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1573426229
+export SOURCE_DATE_EPOCH=1576542643
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
-cp %{_builddir}/plasma-framework-5.64.0/COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/plasma-framework-5.64.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-framework/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/plasma-framework-5.65.0/COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/plasma-framework-5.65.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-framework/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -538,9 +517,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.64.0
+/usr/lib64/libKF5Plasma.so.5.65.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.64.0
+/usr/lib64/libKF5PlasmaQuick.so.5.65.0
 /usr/lib64/qt5/plugins/kpackage/packagestructure/containmentactions_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/dataengine_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmageneric_packagestructure.so
