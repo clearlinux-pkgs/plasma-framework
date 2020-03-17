@@ -1,9 +1,13 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
 buildreq-kde
-qtquickcontrols2-dev
-qtmultimedia-dev
-qtxmlpatterns-dev
-qtdeclarative-dev
+kactivities-dev
+kglobalaccel-dev
+kirigami2-dev
+kwayland-dev
 mesa-dev
+qtdeclarative-dev
+qtmultimedia-dev
+qtquickcontrols2-dev
 qtsvg-dev
+qtxmlpatterns-dev
