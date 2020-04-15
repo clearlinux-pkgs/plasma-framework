@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.68.0
-Release  : 28
-URL      : https://download.kde.org/stable/frameworks/5.68/plasma-framework-5.68.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.68/plasma-framework-5.68.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.68/plasma-framework-5.68.0.tar.xz.sig
+Version  : 5.69.0
+Release  : 29
+URL      : https://download.kde.org/stable/frameworks/5.69/plasma-framework-5.69.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.69/plasma-framework-5.69.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.69/plasma-framework-5.69.0.tar.xz.sig
 Summary  : Plasma library and runtime components based upon KF5 and Qt5
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -37,13 +37,11 @@ BuildRequires : qtsvg-dev
 BuildRequires : qtxmlpatterns-dev
 
 %description
-Plasma Applet Template
-----------------------
--- Namespace adaption --
-Each Plasma plugin has a unique identifier, which is also used to find related
-resources (like the translation catalogs).
-To avoid naming collisions, Plasma plugins use a reverse domain name notation
-for that identifier:
+libplasma
+This directory contains the classes making up libplasma, which provides the
+core framework used by Plasma applications, such as the Plasma desktop shell
+and its components. This includes applet and extension definitions and loading,
+common GUI elements, data and service interaction, search system, etc.
 
 %package bin
 Summary: bin components for the plasma-framework package.
@@ -111,15 +109,15 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.68.0
-cd %{_builddir}/plasma-framework-5.68.0
+%setup -q -n plasma-framework-5.69.0
+cd %{_builddir}/plasma-framework-5.69.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1584425957
+export SOURCE_DATE_EPOCH=1586972399
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -127,19 +125,19 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1584425957
+export SOURCE_DATE_EPOCH=1586972399
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
-cp %{_builddir}/plasma-framework-5.68.0/COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/plasma-framework-5.68.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-framework/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/plasma-framework-5.69.0/COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/plasma-framework-5.69.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-framework/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -363,6 +361,7 @@ popd
 /usr/share/plasma/desktoptheme/default/widgets/pager.svgz
 /usr/share/plasma/desktoptheme/default/widgets/panel-background.svgz
 /usr/share/plasma/desktoptheme/default/widgets/picker.svgz
+/usr/share/plasma/desktoptheme/default/widgets/plasmoidheading.svgz
 /usr/share/plasma/desktoptheme/default/widgets/plot-background.svgz
 /usr/share/plasma/desktoptheme/default/widgets/scrollbar.svgz
 /usr/share/plasma/desktoptheme/default/widgets/scrollwidget.svgz
@@ -519,9 +518,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.68.0
+/usr/lib64/libKF5Plasma.so.5.69.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.68.0
+/usr/lib64/libKF5PlasmaQuick.so.5.69.0
 /usr/lib64/qt5/plugins/kpackage/packagestructure/containmentactions_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/dataengine_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmageneric_packagestructure.so
@@ -547,6 +546,7 @@ popd
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Label.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Menu.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/MenuItem.qml
+/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Page.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/PageIndicator.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Popup.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/ProgressBar.qml
@@ -641,6 +641,7 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Label.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Menu.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/MenuItem.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/Page.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/PageIndicator.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Popup.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/ProgressBar.qml
@@ -727,6 +728,7 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/extras/Heading.qml
 /usr/lib64/qt5/qml/org/kde/plasma/extras/PageRow.qml
 /usr/lib64/qt5/qml/org/kde/plasma/extras/Paragraph.qml
+/usr/lib64/qt5/qml/org/kde/plasma/extras/PlasmoidHeading.qml
 /usr/lib64/qt5/qml/org/kde/plasma/extras/ScrollArea.qml
 /usr/lib64/qt5/qml/org/kde/plasma/extras/Title.qml
 /usr/lib64/qt5/qml/org/kde/plasma/extras/animations/ActivateAnimation.qml
