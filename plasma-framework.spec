@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.70.1
-Release  : 32
-URL      : https://download.kde.org/stable/frameworks/5.70/plasma-framework-5.70.1.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.70/plasma-framework-5.70.1.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.70/plasma-framework-5.70.1.tar.xz.sig
+Version  : 5.71.0
+Release  : 33
+URL      : https://download.kde.org/stable/frameworks/5.71/plasma-framework-5.71.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.71/plasma-framework-5.71.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.71/plasma-framework-5.71.0.tar.xz.sig
 Summary  : Plasma library and runtime components based upon KF5 and Qt5
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -119,15 +119,15 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.70.1
-cd %{_builddir}/plasma-framework-5.70.1
+%setup -q -n plasma-framework-5.71.0
+cd %{_builddir}/plasma-framework-5.71.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589487273
+export SOURCE_DATE_EPOCH=1592260093
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -143,11 +143,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1589487273
+export SOURCE_DATE_EPOCH=1592260093
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
-cp %{_builddir}/plasma-framework-5.70.1/COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/plasma-framework-5.70.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-framework/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/plasma-framework-5.71.0/COPYING %{buildroot}/usr/share/package-licenses/plasma-framework/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/plasma-framework-5.71.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-framework/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -270,8 +270,10 @@ popd
 /usr/share/plasma/desktoptheme/air/widgets/viewitem.svgz
 /usr/share/plasma/desktoptheme/breeze-dark/colors
 /usr/share/plasma/desktoptheme/breeze-dark/metadata.desktop
+/usr/share/plasma/desktoptheme/breeze-dark/widgets/plasmoidheading.svgz
 /usr/share/plasma/desktoptheme/breeze-light/colors
 /usr/share/plasma/desktoptheme/breeze-light/metadata.desktop
+/usr/share/plasma/desktoptheme/breeze-light/widgets/plasmoidheading.svgz
 /usr/share/plasma/desktoptheme/default/dialogs/background.svgz
 /usr/share/plasma/desktoptheme/default/icons/akonadi.svgz
 /usr/share/plasma/desktoptheme/default/icons/akregator.svgz
@@ -527,9 +529,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.70.0
+/usr/lib64/libKF5Plasma.so.5.71.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.70.0
+/usr/lib64/libKF5PlasmaQuick.so.5.71.0
 /usr/lib64/qt5/plugins/kpackage/packagestructure/containmentactions_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/dataengine_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmageneric_packagestructure.so
@@ -619,6 +621,7 @@ popd
 /usr/lib64/qt5/qml/QtQuick/Controls/Styles/Plasma/private/TextFieldFocus.qml
 /usr/lib64/qt5/qml/QtQuick/Controls/Styles/Plasma/private/Util.js
 /usr/lib64/qt5/qml/QtQuick/Controls/Styles/Plasma/qmldir
+/usr/lib64/qt5/qml/org/kde/kirigami.2/styles/Plasma/AbstractApplicationHeader.qml
 /usr/lib64/qt5/qml/org/kde/kirigami.2/styles/Plasma/Icon.qml
 /usr/lib64/qt5/qml/org/kde/kirigami.2/styles/Plasma/Theme.qml
 /usr/lib64/qt5/qml/org/kde/kirigami.2/styles/Plasma/Units.qml
