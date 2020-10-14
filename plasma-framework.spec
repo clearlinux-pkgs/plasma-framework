@@ -6,7 +6,7 @@
 #
 Name     : plasma-framework
 Version  : 5.75.0
-Release  : 35
+Release  : 36
 URL      : https://download.kde.org/stable/frameworks/5.75/plasma-framework-5.75.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.75/plasma-framework-5.75.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.75/plasma-framework-5.75.0.tar.xz.sig
@@ -127,7 +127,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602696575
+export SOURCE_DATE_EPOCH=1602704793
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -143,7 +143,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1602696575
+export SOURCE_DATE_EPOCH=1602704793
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
 cp %{_builddir}/plasma-framework-5.75.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
