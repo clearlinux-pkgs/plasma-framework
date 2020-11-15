@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.75.0
-Release  : 36
-URL      : https://download.kde.org/stable/frameworks/5.75/plasma-framework-5.75.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.75/plasma-framework-5.75.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.75/plasma-framework-5.75.0.tar.xz.sig
+Version  : 5.76.0
+Release  : 37
+URL      : https://download.kde.org/stable/frameworks/5.76/plasma-framework-5.76.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.76/plasma-framework-5.76.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.76/plasma-framework-5.76.0.tar.xz.sig
 Summary  : Plasma library and runtime components based upon KF5 and Qt5
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -119,15 +119,15 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.75.0
-cd %{_builddir}/plasma-framework-5.75.0
+%setup -q -n plasma-framework-5.76.0
+cd %{_builddir}/plasma-framework-5.76.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602704793
+export SOURCE_DATE_EPOCH=1605428938
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -143,25 +143,25 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1602704793
+export SOURCE_DATE_EPOCH=1605428938
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/3c3d7573e137d48253731c975ecf90d74cfa9efe
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/757b86330df80f81143d5916b3e92b4bcb1b1890
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-framework-5.75.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-framework-5.75.0/templates/cpp-plasmoid/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/plasma-framework-5.75.0/templates/plasma-wallpaper-with-qml-extension/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/plasma-framework-5.75.0/templates/plasma-wallpaper/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/plasma-framework-5.75.0/templates/qml-plasmoid-with-qml-extension/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/plasma-framework-5.75.0/templates/qml-plasmoid/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/3c3d7573e137d48253731c975ecf90d74cfa9efe
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-framework-5.76.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-framework-5.76.0/templates/cpp-plasmoid/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-5.76.0/templates/plasma-wallpaper-with-qml-extension/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-5.76.0/templates/plasma-wallpaper/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-5.76.0/templates/qml-plasmoid-with-qml-extension/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-5.76.0/templates/qml-plasmoid/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
 pushd clr-build
 %make_install
 popd
@@ -329,6 +329,7 @@ popd
 /usr/share/plasma/desktoptheme/default/icons/list.svgz
 /usr/share/plasma/desktoptheme/default/icons/mail.svgz
 /usr/share/plasma/desktoptheme/default/icons/media.svgz
+/usr/share/plasma/desktoptheme/default/icons/mobile.svgz
 /usr/share/plasma/desktoptheme/default/icons/nepomuk.svgz
 /usr/share/plasma/desktoptheme/default/icons/network.svgz
 /usr/share/plasma/desktoptheme/default/icons/notification.svgz
@@ -544,15 +545,16 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.75.0
+/usr/lib64/libKF5Plasma.so.5.76.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.75.0
+/usr/lib64/libKF5PlasmaQuick.so.5.76.0
 /usr/lib64/qt5/plugins/kpackage/packagestructure/containmentactions_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/dataengine_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmageneric_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmatheme_packagestructure.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasmoid_packagestructure.so
 /usr/lib64/qt5/plugins/plasma/scriptengines/plasma_appletscript_declarative.so
+/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/AbstractButton.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/BusyIndicator.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Button.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/CheckBox.qml
@@ -571,8 +573,10 @@ popd
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Label.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Menu.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/MenuItem.qml
+/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/MenuSeparator.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Page.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/PageIndicator.qml
+/usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Pane.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/Popup.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/ProgressBar.qml
 /usr/lib64/qt5/qml/QtQuick/Controls.2/Plasma/README.md
@@ -656,6 +660,7 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/calendar/libcalendarplugin.so
 /usr/lib64/qt5/qml/org/kde/plasma/calendar/plugins.qmltypes
 /usr/lib64/qt5/qml/org/kde/plasma/calendar/qmldir
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/AbstractButton.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/BusyIndicator.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Button.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/CheckBox.qml
@@ -674,8 +679,10 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Label.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Menu.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/MenuItem.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/MenuSeparator.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Page.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/PageIndicator.qml
+/usr/lib64/qt5/qml/org/kde/plasma/components.3/Pane.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/Popup.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/ProgressBar.qml
 /usr/lib64/qt5/qml/org/kde/plasma/components.3/README.md
