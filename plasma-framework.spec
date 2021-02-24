@@ -6,7 +6,7 @@
 #
 Name     : plasma-framework
 Version  : 5.78.0
-Release  : 39
+Release  : 40
 URL      : https://download.kde.org/stable/frameworks/5.78/plasma-framework-5.78.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.78/plasma-framework-5.78.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.78/plasma-framework-5.78.0.tar.xz.sig
@@ -35,7 +35,7 @@ BuildRequires : kparts-dev
 BuildRequires : kwayland-dev
 BuildRequires : kwidgetsaddons-dev
 BuildRequires : kxmlgui-dev
-BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
+BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86vm-dev
 BuildRequires : mesa-dev
 BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
