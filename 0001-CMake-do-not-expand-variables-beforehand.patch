@@ -1,0 +1,43 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Adriaan de Groot <groot@kde.org>
+Date: Wed, 2 Jun 2021 10:53:58 +0200
+Subject: [PATCH] CMake: do not expand variables beforehand
+
+In **general**, variables in `if()` commands should not be expanded
+"by hand" before use, because substitution occurs before the `if()`
+command is parsed: in practice that means that a command like
+
+	if(${A} STREQUAL "A")
+
+can expand to (depending on the value of A being empty, "B" or "A")
+
+	if( STREQUAL "A")
+	if(B STREQUAL "A")
+	if(A STREQUAL "A")
+
+Then the `if()` command is processed, leading to:
+
+ - a syntax error
+ - comparing the value of variable B against string "A"
+ - comparing the value of variable A (it's "A" because that
+   is what `${A}` expanded to) against string "A"
+
+This is explained in section *Variable Expansion* of the documentation
+of the `if()` command, but keeps tripping people up.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3e68d14..8377a38 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -105,7 +105,7 @@ set_package_properties(OpenGL PROPERTIES DESCRIPTION "The OpenGL libraries"
+                       )
+ 
+ add_feature_info(GLX ${OpenGL_GLX_FOUND} "OpenGL GLX libraries.")
+-if(OpenGL_GLX_FOUND AND X11_FOUND AND (${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GL"))
++if(OpenGL_GLX_FOUND AND X11_FOUND AND (Qt5Gui_OPENGL_IMPLEMENTATION STREQUAL "GL"))
+     set(HAVE_GLX 1)
+ else()
+     set(HAVE_GLX 0)

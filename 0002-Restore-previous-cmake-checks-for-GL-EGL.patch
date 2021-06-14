@@ -1,0 +1,64 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Patrick McCarty <patrick.mccarty@intel.com>
+Date: Mon, 14 Jun 2021 15:53:28 -0700
+Subject: [PATCH] Restore previous cmake checks for GL/EGL
+
+The new cmake changes to use FindOpenGL exclusively do not appear to work on
+systems (like Clear Linux OS) that lack GLVND. Restore the previous behavior to
+fix the checks.
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ CMakeLists.txt                             | 15 ++++++++-------
+ src/declarativeimports/core/CMakeLists.txt |  4 ++--
+ 2 files changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8377a38..8fbfbd7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -104,17 +104,18 @@ set_package_properties(OpenGL PROPERTIES DESCRIPTION "The OpenGL libraries"
+                        TYPE OPTIONAL
+                       )
+ 
+-add_feature_info(GLX ${OpenGL_GLX_FOUND} "OpenGL GLX libraries.")
+-if(OpenGL_GLX_FOUND AND X11_FOUND AND (Qt5Gui_OPENGL_IMPLEMENTATION STREQUAL "GL"))
+-    set(HAVE_GLX 1)
++if(OPENGL_FOUND AND X11_FOUND AND (Qt5Gui_OPENGL_IMPLEMENTATION STREQUAL "GL"))
++    set(HAVE_GLX ${HAVE_X11})
+ else()
+     set(HAVE_GLX 0)
+ endif()
+ 
+-add_feature_info(EGL ${OpenGL_EGL_FOUND}
+-                 "A platform-agnostic mechanism for creating rendering surfaces for use with other graphics libraries, such as OpenGL|ES and OpenVG.")
+-# OpenGL_EGL_FOUND is defined by FindOpenGL
+-set(HAVE_EGL ${OpenGL_EGL_FOUND})
++find_package(EGL)
++set_package_properties(EGL PROPERTIES
++                       PURPOSE "Support for Window Thumbnail on EGL platform"
++                       TYPE OPTIONAL
++                      )
++set(HAVE_EGL ${EGL_FOUND})
+ 
+ 
+ #########################################################################
+diff --git a/src/declarativeimports/core/CMakeLists.txt b/src/declarativeimports/core/CMakeLists.txt
+index 816f8fd..adc9eb2 100644
+--- a/src/declarativeimports/core/CMakeLists.txt
++++ b/src/declarativeimports/core/CMakeLists.txt
+@@ -53,12 +53,12 @@ if(HAVE_X11)
+   endif()
+ 
+   if(HAVE_GLX)
+-    target_link_libraries(corebindingsplugin OpenGL::GLX)
++    target_link_libraries(corebindingsplugin ${OPENGL_gl_LIBRARY})
+   endif()
+ endif()
+ 
+ if(HAVE_EGL)
+-    target_link_libraries(corebindingsplugin OpenGL::EGL)
++    target_link_libraries(corebindingsplugin EGL::EGL)
+ endif()
+ 
+ if (${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GLESv2")
