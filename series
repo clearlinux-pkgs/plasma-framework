@@ -1,2 +1,1 @@
-0001-CMake-do-not-expand-variables-beforehand.patch
-0002-Restore-previous-cmake-checks-for-GL-EGL.patch
+0001-Restore-previous-cmake-checks-for-GL-EGL.patch
