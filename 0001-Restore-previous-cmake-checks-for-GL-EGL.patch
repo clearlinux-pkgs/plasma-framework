@@ -16,22 +16,6 @@ Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
  src/declarativeimports/core/CMakeLists.txt | 2 +-
  2 files changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7787a05..ac5e4db 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -110,9 +110,8 @@ set_package_properties(EGL PROPERTIES
-                        TYPE OPTIONAL
-                       )
- 
--add_feature_info(GLX ${OpenGL_GLX_FOUND} "OpenGL GLX libraries.")
--if(OpenGL_GLX_FOUND AND X11_FOUND AND (Qt5Gui_OPENGL_IMPLEMENTATION STREQUAL "GL"))
--    set(HAVE_GLX 1)
-+if(OPENGL_FOUND AND X11_FOUND AND (Qt5Gui_OPENGL_IMPLEMENTATION STREQUAL "GL"))
-+    set(HAVE_GLX ${HAVE_X11})
- else()
-     set(HAVE_GLX 0)
- endif()
 diff --git a/src/declarativeimports/core/CMakeLists.txt b/src/declarativeimports/core/CMakeLists.txt
 index c95b4b4..066f8cb 100644
 --- a/src/declarativeimports/core/CMakeLists.txt
@@ -45,3 +29,16 @@ index c95b4b4..066f8cb 100644
    endif()
  endif()
  
+--- plasma-framework-5.87.0/CMakeLists.txt~	2021-10-02 14:35:10.000000000 +0000
++++ plasma-framework-5.87.0/CMakeLists.txt	2021-10-17 22:54:49.137790302 +0000
+@@ -111,8 +111,8 @@
+                       )
+ 
+ add_feature_info(GLX OpenGL_GLX_FOUND "OpenGL GLX libraries.")
+-if(OpenGL_GLX_FOUND AND X11_FOUND AND (Qt5Gui_OPENGL_IMPLEMENTATION STREQUAL "GL"))
+-    set(HAVE_GLX 1)
++if(OPENGL_FOUND AND X11_FOUND AND (Qt5Gui_OPENGL_IMPLEMENTATION STREQUAL "GL"))
++    set(HAVE_GLX ${HAVE_X11})
+ else()
+     set(HAVE_GLX 0)
+ endif()
