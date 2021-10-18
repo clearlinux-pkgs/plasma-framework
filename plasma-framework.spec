@@ -6,7 +6,7 @@
 #
 Name     : plasma-framework
 Version  : 5.87.0
-Release  : 45
+Release  : 46
 URL      : https://download.kde.org/stable/frameworks/5.87/plasma-framework-5.87.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.87/plasma-framework-5.87.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.87/plasma-framework-5.87.0.tar.xz.sig
