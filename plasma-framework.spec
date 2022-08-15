@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.96.0
-Release  : 55
-URL      : https://download.kde.org/stable/frameworks/5.96/plasma-framework-5.96.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.96/plasma-framework-5.96.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.96/plasma-framework-5.96.0.tar.xz.sig
+Version  : 5.97.0
+Release  : 56
+URL      : https://download.kde.org/stable/frameworks/5.97/plasma-framework-5.97.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.97/plasma-framework-5.97.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.97/plasma-framework-5.97.0.tar.xz.sig
 Summary  : Plasma library and runtime components based upon KF5 and Qt5
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -25,11 +25,14 @@ BuildRequires : extra-cmake-modules pkgconfig(egl)
 BuildRequires : extra-cmake-modules pkgconfig(xcb) xcb-util-cursor-dev xcb-util-image-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev xcb-util-dev
 BuildRequires : extra-cmake-modules-data
 BuildRequires : kactivities-dev
+BuildRequires : kconfigwidgets-dev
 BuildRequires : kcoreaddons-dev
 BuildRequires : kdeclarative-dev
 BuildRequires : kdelibs4support-dev
 BuildRequires : kdesu-dev
+BuildRequires : kdoctools-dev
 BuildRequires : kglobalaccel-dev
+BuildRequires : kiconthemes-dev
 BuildRequires : kio-dev
 BuildRequires : kirigami2-dev
 BuildRequires : kpackage-dev
@@ -120,15 +123,15 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.96.0
-cd %{_builddir}/plasma-framework-5.96.0
+%setup -q -n plasma-framework-5.97.0
+cd %{_builddir}/plasma-framework-5.97.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1657647995
+export SOURCE_DATE_EPOCH=1660580041
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -144,28 +147,28 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1657647995
+export SOURCE_DATE_EPOCH=1660580041
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-framework/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/3c3d7573e137d48253731c975ecf90d74cfa9efe
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/757b86330df80f81143d5916b3e92b4bcb1b1890
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/plasma-framework-5.96.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/plasma-framework-5.96.0/templates/cpp-plasmoid/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/plasma-framework-5.96.0/templates/plasma-wallpaper-with-qml-extension/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/plasma-framework-5.96.0/templates/plasma-wallpaper/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/plasma-framework-5.96.0/templates/qml-plasmoid-with-qml-extension/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/plasma-framework-5.96.0/templates/qml-plasmoid/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-framework/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/3c3d7573e137d48253731c975ecf90d74cfa9efe
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-framework/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/plasma-framework-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-framework/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/plasma-framework-%{version}/templates/cpp-plasmoid/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-%{version}/templates/plasma-wallpaper-with-qml-extension/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-%{version}/templates/plasma-wallpaper/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-%{version}/templates/qml-plasmoid-with-qml-extension/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/plasma-framework-%{version}/templates/qml-plasmoid/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-framework/6f1f675aa5f6a2bbaa573b8343044b166be28399
 pushd clr-build
 %make_install
 popd
@@ -562,9 +565,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.96.0
+/usr/lib64/libKF5Plasma.so.5.97.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.96.0
+/usr/lib64/libKF5PlasmaQuick.so.5.97.0
 /usr/lib64/qt5/plugins/kf5/kirigami/KirigamiPlasmaStyle.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasma_applet.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasma_containmentactions.so
@@ -839,6 +842,7 @@ popd
 %files man
 %defattr(0644,root,root,0755)
 /usr/share/man/ca/man1/plasmapkg2.1
+/usr/share/man/ca@valencia/man1/plasmapkg2.1
 /usr/share/man/de/man1/plasmapkg2.1
 /usr/share/man/es/man1/plasmapkg2.1
 /usr/share/man/fr/man1/plasmapkg2.1
