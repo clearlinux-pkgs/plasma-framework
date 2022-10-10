@@ -18,6 +18,7 @@ libKF5Notifications.so.5
 libKF5Package.so.5
 libKF5QuickAddons.so.5
 libKF5Service.so.5
+libKF5WaylandClient.so.5
 libKF5WidgetsAddons.so.5
 libKF5WindowSystem.so.5
 libKF5XmlGui.so.5
