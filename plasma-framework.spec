@@ -7,7 +7,7 @@
 #
 Name     : plasma-framework
 Version  : 5.106.0
-Release  : 68
+Release  : 69
 URL      : https://download.kde.org/stable/frameworks/5.106/plasma-framework-5.106.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.106/plasma-framework-5.106.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.106/plasma-framework-5.106.0.tar.xz.sig
@@ -131,7 +131,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684883170
+export SOURCE_DATE_EPOCH=1685569604
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -164,7 +164,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684883170
+export SOURCE_DATE_EPOCH=1685569604
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
 cp %{_builddir}/plasma-framework-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e || :
@@ -522,8 +522,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5Plasma.so
-/V3/usr/lib64/libKF5PlasmaQuick.so
 /usr/include/KF5/Plasma/Applet
 /usr/include/KF5/Plasma/Containment
 /usr/include/KF5/Plasma/ContainmentActions
@@ -588,9 +586,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5Plasma.so.5
 /V3/usr/lib64/libKF5Plasma.so.5.106.0
-/V3/usr/lib64/libKF5PlasmaQuick.so.5
 /V3/usr/lib64/libKF5PlasmaQuick.so.5.106.0
 /V3/usr/lib64/qt5/plugins/kf5/kirigami/KirigamiPlasmaStyle.so
 /V3/usr/lib64/qt5/plugins/kpackage/packagestructure/plasma_applet.so
