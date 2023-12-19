@@ -8,11 +8,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : plasma-framework
-Version  : 5.112.0
-Release  : 76
-URL      : https://download.kde.org/stable/frameworks/5.112/plasma-framework-5.112.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.112/plasma-framework-5.112.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.112/plasma-framework-5.112.0.tar.xz.sig
+Version  : 5.113.0
+Release  : 77
+URL      : https://download.kde.org/stable/frameworks/5.113/plasma-framework-5.113.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.113/plasma-framework-5.113.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.113/plasma-framework-5.113.0.tar.xz.sig
 Summary  : Plasma library and runtime components based upon KF5 and Qt5
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -125,15 +125,15 @@ man components for the plasma-framework package.
 
 
 %prep
-%setup -q -n plasma-framework-5.112.0
-cd %{_builddir}/plasma-framework-5.112.0
+%setup -q -n plasma-framework-5.113.0
+cd %{_builddir}/plasma-framework-5.113.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1702058328
+export SOURCE_DATE_EPOCH=1703022160
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -192,7 +192,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1702058328
+export SOURCE_DATE_EPOCH=1703022160
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-framework
 cp %{_builddir}/plasma-framework-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-framework/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e || :
@@ -249,8 +249,6 @@ popd
 /usr/share/kservicetypes5/plasma-service.desktop
 /usr/share/kservicetypes5/plasma-shell.desktop
 /usr/share/kservicetypes5/plasma-wallpaper.desktop
-/usr/share/locale/lt/LC_SCRIPTS/libplasma5/libplasma5.js
-/usr/share/locale/lt/LC_SCRIPTS/libplasma5/plasmoids.js
 /usr/share/plasma/desktoptheme/air/colors
 /usr/share/plasma/desktoptheme/air/dialogs/background.svgz
 /usr/share/plasma/desktoptheme/air/dialogs/kickoff.svgz
@@ -614,8 +612,8 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5Plasma.so.5.112.0
-/V3/usr/lib64/libKF5PlasmaQuick.so.5.112.0
+/V3/usr/lib64/libKF5Plasma.so.5.113.0
+/V3/usr/lib64/libKF5PlasmaQuick.so.5.113.0
 /V3/usr/lib64/qt5/plugins/kf5/kirigami/KirigamiPlasmaStyle.so
 /V3/usr/lib64/qt5/plugins/kpackage/packagestructure/plasma_applet.so
 /V3/usr/lib64/qt5/plugins/kpackage/packagestructure/plasma_containmentactions.so
@@ -629,9 +627,9 @@ popd
 /V3/usr/lib64/qt5/qml/org/kde/plasma/extras/libplasmaextracomponentsplugin.so
 /V3/usr/lib64/qt5/qml/org/kde/plasma/platformcomponents/libplatformcomponentsplugin.so
 /usr/lib64/libKF5Plasma.so.5
-/usr/lib64/libKF5Plasma.so.5.112.0
+/usr/lib64/libKF5Plasma.so.5.113.0
 /usr/lib64/libKF5PlasmaQuick.so.5
-/usr/lib64/libKF5PlasmaQuick.so.5.112.0
+/usr/lib64/libKF5PlasmaQuick.so.5.113.0
 /usr/lib64/qt5/plugins/kf5/kirigami/KirigamiPlasmaStyle.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasma_applet.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasma_containmentactions.so
